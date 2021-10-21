@@ -20,6 +20,20 @@ fun main(args: Array<String>) {
         raw2D {
             drawString("Hello World", 100, 100)
         }
+        text(
+            "Hello World in RED",
+            x = 200,
+            y = 100
+        )
+        arc {
+            x = 0
+            y = 0
+            height = 100
+            width = 100
+            fillColor = Color.CYAN
+            shouldFill = true
+            strokeColor = fillColor
+        }
     }
     mf.isVisible = true
 }

@@ -1,7 +1,9 @@
 package org.onion27.swingdsl
 
+import java.awt.Color
 import java.awt.Graphics
 import java.awt.Graphics2D
+import java.text.AttributedCharacterIterator
 
 class KJPainter {
     private val graphics: Graphics
@@ -33,6 +35,27 @@ class KJPainter {
             graphics.color = rect.strokeColor
             graphics.drawOval(rect.x, rect.y, rect.width, rect.height)
         }
+    }
+    fun arc(block: KJArc.() -> Unit) {
+        var arc = KJArc()
+        arc.block()
+        if (arc.shouldFill) {
+            graphics.color = arc.fillColor
+            graphics.fillArc(arc.x, arc.y, arc.width, arc.height, arc.start, arc.degree)
+            graphics.color = arc.strokeColor
+            graphics.drawArc(arc.x, arc.y, arc.width, arc.height, arc.start, arc.degree)
+        } else {
+            graphics.color = arc.strokeColor
+            graphics.drawArc(arc.x, arc.y, arc.width, arc.height, arc.start, arc.degree)
+        }
+    }
+    fun text(content: String, x: Int = 0, y: Int = 0, color: Color = Color.BLACK) {
+        graphics.color = color
+        graphics.drawString(content, x, y)
+    }
+    fun text(content: AttributedCharacterIterator, x: Int = 0, y: Int = 0, color: Color = Color.BLACK) {
+        graphics.color = color
+        graphics.drawString(content, x, y)
     }
     fun rawCode(code: Graphics.() -> Unit) {
         graphics.code()
