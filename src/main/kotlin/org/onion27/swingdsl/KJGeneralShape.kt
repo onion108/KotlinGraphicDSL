@@ -2,7 +2,7 @@ package org.onion27.swingdsl
 
 import java.awt.Color
 
-class KJRectangle {
+class KJGeneralShape {
     var x = 0
     var y = 0
     var width = 0

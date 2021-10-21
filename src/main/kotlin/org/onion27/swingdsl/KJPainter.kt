@@ -8,8 +8,8 @@ class KJPainter {
     constructor(painter: Graphics) {
         graphics = painter
     }
-    fun rect(r: KJRectangle.() -> Unit) {
-        var rect = KJRectangle()
+    fun rect(r: KJGeneralShape.() -> Unit) {
+        var rect = KJGeneralShape()
         rect.r()
         if(rect.shouldFill) {
             graphics.color = rect.fillColor
@@ -21,8 +21,8 @@ class KJPainter {
             graphics.drawRect(rect.x, rect.y, rect.width, rect.height)
         }
     }
-    fun oval(r: KJRectangle.() -> Unit) { // Just too lazy to change "KJRectangle" to "KJOval" [And also it's internal LMAO]
-        var rect = KJRectangle()
+    fun oval(r: KJGeneralShape.() -> Unit) {
+        var rect = KJGeneralShape()
         rect.r()
         if(rect.shouldFill) {
             graphics.color = rect.fillColor
